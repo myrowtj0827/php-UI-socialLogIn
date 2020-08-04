@@ -134,6 +134,13 @@
     .year-top {
         margin-top: 25px !important;
     }
+
+    /**
+     * About page
+     */
+    .getCashback-btn {
+        width: 50% !important;
+    }
 }
 
 /**
@@ -335,6 +342,38 @@
     .display-arrow-left {
         left: -25px !important;
     }
+
+    /**
+     * About page
+     */
+    .getCashback-btn {
+        margin: 0 auto;
+        text-align: center !important;
+        height: 55px !important;
+        width: 70% !important;
+    }
+
+    .txt-black24 {
+        font-size: 1.2rem !important;
+    }
+
+    .txt-purple18 {
+        font-size: 1rem !important;
+    }
+
+    .txt-black16 {
+        font-size: 0.9rem !important;
+    }
+
+    .img-grid57 {
+        margin-bottom: 20px !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    .img3 {
+        max-width: 50% !important;
+        min-width: 50px;
+    }
 }
 
 /**
@@ -417,6 +456,35 @@
     .owl-theme .owl-nav.disabled+.owl-dots {
         top: 80% !important;
         left: 30% !important;
+    }
+
+    /**
+     * About page
+     */
+    .img-grid2 {
+        margin-top: 25px;
+        margin-bottom: 40px;
+        display: grid;
+
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+        grid-column-gap: 30px;
+    }
+
+    .img-grid57 {
+        grid-template-columns: 4fr 8fr !important;
+    }
+
+
+    .img3 {
+        max-width: 70% !important;
+        min-width: 70px !important;
+    }
+
+
+    .txt-green24,
+    .txt-blue24 {
+        font-size: 1.2rem !important;
     }
 }
 
@@ -580,6 +648,39 @@
         width: 45px !important;
         height: 6px !important;
     }
+
+    /**
+     * About page
+     */
+    .card-white {
+        margin: 0 auto !important;
+    }
+
+    .justify-imgLeft-contents {
+        padding-left: 0 !important;
+    }
+
+    .getCashback-btn {
+        width: 100% !important;
+        height: 45px !important;
+    }
+
+    .txt-purple38 {
+        font-size: 2rem !important;
+    }
+    .txt-purple28 {
+        font-size: 1.4rem !important;
+    }
+    .star-size1 {
+        max-width: 20px !important;
+        max-height: 20px !important;
+    }
+    .txt-black24,
+    .txt-purple18,
+    .txt-black16,
+    .txt-gray18 {
+        text-align: center !important;
+    }
 }
 
 /**
@@ -699,6 +800,47 @@
     .grid-slider-cart-Sports {
         margin: 5px !important;
         padding: 5px !important;
+    }
+
+    /**
+     * About page
+     */
+    .txt-black24 {
+        font-size: 1rem !important;
+    }
+
+    .txt-purple18 {
+        font-size: 0.9rem !important;
+    }
+
+    .txt-black16 {
+        font-size: 0.8rem !important;
+    }
+
+    .txt-gray18 {
+        font-size: 1rem !important;
+    }
+
+    .img-grid47-deals {
+        grid-template-columns: 1fr !important;
+    }
+
+    .txt-black30,
+    .txt-black38 {
+        text-align: center !important;
+    }
+
+    .txt-black38 {
+        font-size: 2rem !important;
+    }
+
+    .txt-black30 {
+        font-size: 1.6rem !important;
+    }
+
+    .txt-green24,
+    .txt-blue24 {
+        font-size: 1rem !important;
     }
 }
 
@@ -1655,4 +1797,323 @@ select {
 .rL-float-footer {
     display: flex;
     justify-content: space-between;
+}
+
+/****************************************************************
+/**
+ *
+ * About Page
+ *
+ */
+.headerLine > hr {
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+
+.img-grid2 {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 30px;
+}
+
+.grid-cart2 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px 0 rgba(71, 67, 237, 0.3);
+}
+
+.gridCard-padding {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.addingPB {
+    padding-bottom: 15px;
+}
+
+.grid-cart2:hover {
+    box-shadow: 0 10px 20px 0 rgba(71, 67, 237, 0.8);
+}
+
+.bigImg-size {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.txt-purple28 {
+    font-size: 1.75rem;
+    color: #7E3192;
+}
+
+.txt-black20 {
+    font-size: 1.25rem;
+    color: #000000;
+}
+
+.txt-gray14 {
+    font-size: 0.85rem;
+    color: gray;
+}
+
+.review-padding {
+    padding-bottom: 20px;
+}
+
+.reviewLine {
+    margin: 15px auto;
+}
+
+.star-size {
+    margin-right: 10px;
+    width: 100%;
+    max-width: 6%;
+}
+
+.purple-arrow {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+
+
+.img-grid57 {
+    margin-top: 10px;
+    display: grid;
+
+    grid-template-columns: 5fr 7fr;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 10px;
+}
+
+.gray-bg {
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px 0 rgba(71, 67, 237, 0.1);
+    cursor: pointer;
+}
+
+.gray-bg:hover {
+    box-shadow: 0 4px 8px 0 rgba(71, 67, 237, 0.4);
+}
+
+.txt-width {
+    width: 100%;
+    max-width: 80%;
+}
+
+.positionArrow {
+    position: relative;
+}
+
+.arrow-position {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.share-top {
+    display: flex;
+    margin-top: 20px;
+    padding: 20px 10px;
+}
+
+.socialIcon {
+    width: 100%;
+    max-width: 30px;
+    min-width: 20px;
+    max-height: 30px;
+}
+
+.img3 {
+    width: 100%;
+    max-width: 80%;
+    min-width: 50px;
+}
+
+.txt-green24 {
+    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3b5999;
+}
+
+.txt-blue24 {
+    padding-left: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00acee;
+}
+
+.txt-purple38 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #7E3192;
+}
+
+.txt-black38 {
+    padding-top: 10px;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.padding-adding {
+    padding-bottom: 15px;
+}
+
+.star-size1 {
+    margin-right: 20px;
+    width: 100%;
+    max-width: 30px;
+    height: 100%;
+    max-height: 30px;
+}
+
+.txt-gray18 {
+    font-size: 1.15rem;
+    color: gray;
+    line-height: 1.4;
+}
+
+.getCashback-btn {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+
+    height: 64px;
+    width: 40%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #7E3192;
+    cursor: pointer;
+}
+
+.getCashback-btn:hover {
+    border: 2px solid #7E3192;
+    color: #7E3192;
+    background-color: #FFFFFF;
+}
+
+.nikeBg {
+    border-radius: 7px;
+
+    height: 238px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../images/about/purpleBg.png"), url("../images/about/nike.png");
+    /*background-color: #7E3192;*/
+}
+
+.card-white {
+    border-radius: 8px;
+    padding: 20px;
+
+    width: 100%;
+    height: 100%;
+    max-width: 188px;
+    max-height: 188px;
+    background-color: #FFFFFF;
+}
+.text-align-right {
+    display: flex;
+}
+
+.justify-imgLeft-contents {
+    padding-left: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.nikeSize {
+    width: 100%;
+    max-width: 100%;
+}
+
+.txt-black24 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.txt-purple18 {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #7E3192;
+}
+
+.txt-black16 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: gray;
+}
+
+.cashback-Tb {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.img-grid2-deals {
+    margin-top: 20px;
+    display: grid;
+
+    grid-template-rows: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 20px;
+}
+
+.img-grid47-deals {
+    display: grid;
+
+    grid-template-columns: 4fr 7fr;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 10px;
+}
+
+.txt-black30 {
+    font-size: 1.9rem;
+    color: #000000;
+    font-weight: bold;
+}
+
+.txt-purple24 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #7E3192 !important;
+}
+
+.dress-size {
+    height: 100%;
+    max-height: 80%;
+}
+
+.gray-dressBg {
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px 0 rgba(71, 67, 237, 0.1);
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: right 7px bottom 7px;
+    background-size: 60px;
+    background-image: url("../images/about/Alibaba-logo.png");
+}
+
+.gray-dressBg:hover {
+    box-shadow: 0 4px 8px 0 rgba(71, 67, 237, 0.4);
+}
+
+.rightPadding {
+    padding-right: 20px;
 }
