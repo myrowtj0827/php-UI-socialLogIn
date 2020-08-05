@@ -1213,7 +1213,8 @@ body {
     display:block;
     border:none;
     border-bottom:1px solid #ccc;
-    width:100%
+    width:100%;
+    outline: none;
 }
 
 .signJoin {
@@ -1427,6 +1428,8 @@ body {
     background-repeat: no-repeat;
     background-position: 65px;
     cursor: pointer;
+
+    outline: none;
 }
 
 .google-btn {
@@ -1509,6 +1512,7 @@ body {
     border: 2px solid #7E3192;
     color: #7E3192;
     background-color: #FFFFFF;
+    outline: none;
 }
 
 .homeBg-desc {
@@ -2462,6 +2466,8 @@ select {
     background-repeat: no-repeat;
     background-position: 15px;
     cursor: pointer;
+
+    outline: none;
 }
 
 ::placeholder {
@@ -2708,6 +2714,7 @@ select {
     background-image: url("../images/home/search.png");
     background-repeat: no-repeat;
     background-position: 20px;
+    outline: none;
 }
 
 #custom-select::after {
@@ -2827,6 +2834,7 @@ select {
     background-color: #7E3192;
     text-align: center;
     cursor: pointer;
+    outline: none;
 }
 
 .submit-btn:hover {
