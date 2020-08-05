@@ -585,6 +585,13 @@
         max-width: 250px !important;
     }
 
+    .registration-Bp {
+        padding-top: 100px !important;
+    }
+
+    .verification-email-padding {
+        padding-top: 15px !important;
+    }
 }
 
 /**
@@ -864,6 +871,14 @@
     .txt-top {
         margin-top: 5px !important;
         padding-top: 3px !important;
+    }
+
+    .registration-Bp {
+        text-align: center !important;
+    }
+
+    .verification-email-padding {
+        text-align: center !important;
     }
 }
 
@@ -2272,6 +2287,7 @@ select {
 }
 
 .card-white {
+    margin: 0 auto;
     border-radius: 8px;
     padding: 20px;
 
@@ -2388,6 +2404,7 @@ select {
 .signUp-Bg {
     padding: 120px 14%;
     height: auto;
+    min-height: calc(100vh - 192px - 248px);
     background-image: url("../images/logIn/signUpBg.png");
     background-position: left 100px center;
     background-repeat: no-repeat;
@@ -2841,4 +2858,16 @@ select {
     border: 2px solid #7E3192;
     color: #7E3192;
     background-color: #FFFFFF;
+}
+
+.verification-card {
+    margin-left: 43%;
+}
+
+.registration-Bp {
+    padding-bottom: 20px;
+}
+
+.verification-email-padding {
+    padding-top: 20px;
 }
