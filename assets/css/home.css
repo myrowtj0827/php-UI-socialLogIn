@@ -160,6 +160,10 @@
     .logIn-card {
         max-width: 55% !important;
     }
+
+    .submit-btn {
+        max-width: 30% !important;
+    }
 }
 
 /**
@@ -246,6 +250,11 @@
         max-width: 60% !important;
     }
 
+    .submit-btn {
+        max-width: 40% !important;
+        height: 45px !important;
+        font-size: 1.4rem !important;
+    }
 }
 
 /**
@@ -844,6 +853,18 @@
     #custom-select {
         margin: 10px auto 0 !important;
     }
+
+    .submit-btn {
+        margin: 10px auto !important;
+        max-width: 60% !important;
+        height: 40px !important;
+        font-size: 1.3rem !important;
+    }
+
+    .txt-top {
+        margin-top: 5px !important;
+        padding-top: 3px !important;
+    }
 }
 
 /**
@@ -1057,6 +1078,12 @@
         padding-right: 5px !important;
         padding-left: 5px !important;
     }
+
+    .submit-btn {
+        max-width: 70% !important;
+        height: 35px !important;
+        font-size: 1.2rem !important;
+    }
 }
 
 /**
@@ -1176,10 +1203,10 @@ body {
     cursor: pointer;
 }
 
-::placeholder {
-    font-size: 1rem;
-    color: gray;
-}
+/*::placeholder {*/
+/*    font-size: 1rem;*/
+/*    color: gray;*/
+/*}*/
 
 .air-input {
     padding:8px;
@@ -1457,6 +1484,10 @@ body {
     background-position: 20px;
     background-size: 28px;
     background-image: url("../images/home/password.png");
+}
+.password-btn::placeholder,
+.email-btn::placeholder {
+    font-size: 1.35rem;
 }
 
 .joinNow-btn {
@@ -2506,7 +2537,7 @@ select {
 .logIn-Bg {
     padding: 50px 14%;
     height: auto;
-    background-image: url("../images/logIn/loginBg.png"), url("../images/logIn/logInBg-purple.png");
+    background-image: url("../images/logIn/logInBg-purple.png"), url("../images/logIn/loginBg.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2614,10 +2645,10 @@ select {
     cursor: pointer;
 }
 
-::placeholder {
-    font-size: 1rem;
-    color: gray;
-}
+/*::placeholder {*/
+/*    font-size: 1rem;*/
+/*    color: gray;*/
+/*}*/
 
 .search-bg {
 
