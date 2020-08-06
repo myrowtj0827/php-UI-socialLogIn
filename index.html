@@ -27,7 +27,7 @@
 <div class="margin-center-width homeHeader">
 
 <!--  Header  -->
-    <header>
+    <header id="">
         <div class="flex-container header-txt justify-middle-contents">
             <div class="rL-float rL-margin justify-middle-contents">
                 <div class="phoneMax">
@@ -38,16 +38,25 @@
                         <input class="air-input" type="text" placeholder="Search.." />
                     </div>
                 </div>
-                <div class="rL-float phoneMax">
-                    <a class="boxShawDow signJoin justify-middle-contents" href="signUp.html">Sign Up</a>
-                    <a class="boxShawDow signJoin justify-middle-contents" href="logIn.html">Join Now</a>
+
+                <div class="login-success">
+                    <div class="rL-float phoneMax">
+                        <a class="boxShawDow signJoin justify-middle-contents" href="signUp.html">Sign Up</a>
+                        <a class="boxShawDow signJoin justify-middle-contents" href="logIn.html">Join Now</a>
+                    </div>
                 </div>
+
+                <div class="logout-success">
+                    <div class="rL-float phoneMax">
+                        <a class="boxShawDow signJoin justify-middle-contents" href="index.html">Logout</a>
+                    </div>
+                </div>
+
             </div>
         </div>
 
         <div class="margin-center-width">
             <div class="rL-float rL-navbarMargin navBar-height justify-middle-contents">
-
 <!--  mobile drop down menu  -->
                 <div class="menubar-icon mouseCursor">
                     <div class="dropdown">
@@ -115,7 +124,7 @@
             <div class="showNow-btn boxShawDow justify-middle-contents">SHOP NOW</div>
         </div>
 
-        <div class="signUp-modal justify-middle-nonFlex">
+        <div class="signUp-modal justify-middle-nonFlex login-success">
             <div class="signUp-black-txt txt-bold">Sign Up Today and Get Bonus a $10*</div>
 
             <div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div>
@@ -130,11 +139,11 @@
                 <div class="or-right"><hr /></div>
             </div>
 
-            <input type="email" class="email-btn signUp-gray-txt txt-bold justify-middle-contents signUp-text-left" placeholder="Email" />
-
-            <input type="password" class="password-btn signUp-gray-txt txt-bold justify-middle-contents signUp-text-left" placeholder="Password" />
-
-            <div class="joinNow-btn justify-middle-contents">Join Now</div>
+            <form action="signUp.html">
+                <input type="email" class="email-btn signUp-gray-txt txt-bold justify-middle-contents signUp-text-left" placeholder="Email" />
+                <input type="password" class="password-btn signUp-gray-txt txt-bold justify-middle-contents signUp-text-left" placeholder="Password" />
+                <input type="submit" class="joinNow-btn justify-middle-contents" value="Join Now"/>
+            </form>
         </div>
     </section>
 
@@ -578,6 +587,25 @@
         $('.collections img').attr('src', 'assets/images/home/downBtnBlack.png')
     });
 
+    /**
+     * log in or logout
+     */
+    flag = localStorage.getItem("flag_login");
+
+    if(flag === 'true') {
+        $('.login-success').removeClass('show-btn');
+        $('.logout-success').addClass('show-btn');
+
+
+        $('.login-success').addClass('hide-btn');
+        $('.logout-success').removeClass('hide-btn');
+    } else {
+        $('.logout-success').removeClass('show-btn');
+        $('.login-success').addClass('show-btn');
+
+        $('.logout-success').addClass('hide-btn');
+        $('.login-success').removeClass('hide-btn');
+    }
 </script>
 </body>
 </html>

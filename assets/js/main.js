@@ -1,3 +1,42 @@
+let flag_login = false;
+let flag;
+
+// localStorage.setItem("flag_login", false);
+/**
+ * login state decision
+ */
+$(document).ready(function() {
+    $('.remember-login').click(function () {
+        localStorage.setItem("flag_login", true);
+    });
+
+    // $("#headerLogIn").ready(function() {
+        flag = localStorage.getItem("flag_login");
+
+    if(flag === 'true') {
+        $('.login-success').removeClass('show-btn');
+        $('.logout-success').addClass('show-btn');
+
+
+        $('.login-success').addClass('hide-btn');
+        $('.logout-success').removeClass('hide-btn');
+    } else {
+        $('.logout-success').removeClass('show-btn');
+        $('.login-success').addClass('show-btn');
+
+        $('.logout-success').addClass('hide-btn');
+        $('.login-success').removeClass('hide-btn');
+    }
+    // });
+
+    $('.logout-success').click(function () {
+        localStorage.setItem("flag_login", false);
+
+        $('.logout-success').addClass('hide-btn');
+        $('.login-success').removeClass('show-btn');
+    });
+});
+
 /**
  * Slide Img6
  */
@@ -7,7 +46,7 @@ $(document).ready(function() {
         items: 6,
         loop: true,
         margin: 10,
-        // navigation : true,
+
         nav: true,
         navText: ["<span class='display-arrow-left carousel-nav-left'>\n" +
         "                    <div class=\"justify-middle-contents tipsPrev\">\n" +
@@ -19,10 +58,6 @@ $(document).ready(function() {
         dots:false,
         autoplay: true,
         autoplayTimeout:2500,
-        // autoWidth:true,
-        // paginationSpeed: 300,
-        // rewindSpeed: 400,
-
         responsive:{
             0:{
                 items:2
@@ -38,12 +73,10 @@ $(document).ready(function() {
                 items:6
             }
         }
-
     });
 
     owl.trigger('owl.play',2500);
 
-    // Custom Navigation Events
     $(".tipsNext").click(function(){
         owl.trigger('owl.next');
     });
@@ -62,7 +95,6 @@ $(document).ready(function() {
         items: 1,
         loop: true,
         margin: 10,
-        // navigation : true,
         nav: true,
         navText: ["<span class='display-arrow-left carousel-nav-left'>\n" +
         "                    <div class=\"justify-middle-contents tipsPrev\">\n" +
@@ -72,27 +104,20 @@ $(document).ready(function() {
         "                        <img src=\"assets/images/home/arrow-right.png\" alt=\"\" />\n" +
         "                </div></span>"],
         dots: false,
-        autoplay: false,
+        autoplay: true,
         autoplayTimeout:2500,
-        // autoWidth:true,
-        // paginationSpeed: 300,
-        // rewindSpeed: 400,
         responsive:{
             0:{
                 items:1
             },
-
         }
-
     });
 
     owl.trigger('owl.play',2500);
 
-    // Custom Navigation Events
     $(".tipsNext").click(function(){
         owl.trigger('owl.next');
     });
-
     $(".tipsPrev").click(function(){
         owl.trigger('owl.prev');
     });

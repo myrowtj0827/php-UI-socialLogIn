@@ -26,7 +26,7 @@
 
 <div class="margin-center-width homeHeader">
     <!--  Header  -->
-    <header>
+    <header id="">
         <div class="flex-container header-txt justify-middle-contents">
             <div class="rL-float rL-margin justify-middle-contents">
                 <div class="phoneMax">
@@ -37,16 +37,24 @@
                         <input class="air-input" type="text" placeholder="Search.." />
                     </div>
                 </div>
-                <div class="rL-float phoneMax">
-                    <a class="boxShawDow signJoin justify-middle-contents" href="signUp.html">Sign Up</a>
-                    <a class="boxShawDow signJoin justify-middle-contents" href="logIn.html">Join Now</a>
+
+                <div class="login-success">
+                    <div class="rL-float phoneMax">
+                        <a class="boxShawDow signJoin justify-middle-contents" href="signUp.html">Sign Up</a>
+                        <a class="boxShawDow signJoin justify-middle-contents" href="logIn.html">Join Now</a>
+                    </div>
+                </div>
+
+                <div class="logout-success">
+                    <div class="rL-float phoneMax">
+                        <a class="boxShawDow signJoin justify-middle-contents" href="index.html">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="margin-center-width">
             <div class="rL-float rL-navbarMargin navBar-height justify-middle-contents">
-
                 <!--  mobile drop down menu  -->
                 <div class="menubar-icon mouseCursor">
                     <div class="dropdown">
@@ -118,14 +126,6 @@
         </div>
     </section>
 
-
-
-
-
-
-
-
-
     <!--  Footer  -->
     <footer class="flex-container footerBg justify-middle-contents">
         <div class="footer-padding rL-float-footer">
@@ -172,6 +172,26 @@
         $('.collections img').attr('src', 'assets/images/home/downBtnBlack.png')
     });
 
+
+    /**
+     * log in or logout
+     */
+    flag = localStorage.getItem("flag_login");
+
+    if(flag === 'true') {
+        $('.login-success').removeClass('show-btn');
+        $('.logout-success').addClass('show-btn');
+
+
+        $('.login-success').addClass('hide-btn');
+        $('.logout-success').removeClass('hide-btn');
+    } else {
+        $('.logout-success').removeClass('show-btn');
+        $('.login-success').addClass('show-btn');
+
+        $('.logout-success').addClass('hide-btn');
+        $('.login-success').removeClass('hide-btn');
+    }
 </script>
 </body>
 </html>

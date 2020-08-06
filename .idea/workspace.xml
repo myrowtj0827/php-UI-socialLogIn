@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a18407f-f66b-432d-bb29-0620fc781f77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/emailVerification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/currentBalance.html" beforeDir="false" afterPath="$PROJECT_DIR$/currentBalance.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emailVerification.html" beforeDir="false" afterPath="$PROJECT_DIR$/emailVerification.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/logIn.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/signUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/store.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +70,8 @@
       <workItem from="1596535339937" duration="16654000" />
       <workItem from="1596553727755" duration="37924000" />
       <workItem from="1596619668566" duration="16529000" />
-      <workItem from="1596646641764" duration="4974000" />
+      <workItem from="1596646641764" duration="18092000" />
+      <workItem from="1596706387246" duration="4207000" />
     </task>
     <servers />
   </component>
@@ -74,6 +79,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2248" y="230" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596676135293">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2248" y="230" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596676135293" />
     <state x="2534" y="137" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596458269633">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
@@ -86,5 +95,9 @@
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state x="2364" y="232" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596596152542" />
+    <state x="2698" y="340" width="672" height="678" key="search.everywhere.popup" timestamp="1596670419268">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2698" y="340" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596670419268" />
   </component>
 </project>

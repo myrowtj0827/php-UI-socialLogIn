@@ -1329,13 +1329,13 @@ body {
 .dropDown-item {
     margin-bottom: 15px;
     padding-left: 5px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
     line-height: 2;
 }
 
 .dropDown-item:hover {
-    color: #ED365C !important;
+    color: #7E3192 !important;
 }
 
 /**
@@ -1510,6 +1510,7 @@ body {
 
 .joinNow-btn {
     margin: 40px auto 0;
+    border: none;
     border-radius: 30px;
     width: 100%;
     max-width: 50%;
@@ -2590,6 +2591,22 @@ select {
 
 .remember-login {
     margin-bottom: 20px;
+}
+
+.hide-btn {
+    display: none !important;
+}
+
+.logout-success {
+    display: none;
+}
+
+.login-success {
+    display: block;
+}
+
+.show-btn {
+    display: block !important;
 }
 
 .txt-blue18 {
