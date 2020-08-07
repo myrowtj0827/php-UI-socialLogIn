@@ -1,47 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a18407f-f66b-432d-bb29-0620fc781f77" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/currentBalance.html" beforeDir="false" afterPath="$PROJECT_DIR$/currentBalance.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emailVerification.html" beforeDir="false" afterPath="$PROJECT_DIR$/emailVerification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/logIn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store.html" beforeDir="false" afterPath="$PROJECT_DIR$/store.html" afterDir="false" />
-    </list>
+    <list default="true" id="64065dfd-7487-4ebf-a037-81a9b536f61d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="08-03-PHP-frontEnd-5Page" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1faTbBd5QZr5Che1YCs4rHU8qGc" />
+  <component name="ProjectId" id="1fl5IZwuP35x0IZfMdVKlwTFJ8D" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -60,44 +34,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4a18407f-f66b-432d-bb29-0620fc781f77" name="Default Changelist" comment="" />
-      <created>1596455272898</created>
+      <changelist id="64065dfd-7487-4ebf-a037-81a9b536f61d" name="Default Changelist" comment="" />
+      <created>1596779759736</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1596455272898</updated>
-      <workItem from="1596455274054" duration="15337000" />
-      <workItem from="1596473947095" duration="36162000" />
-      <workItem from="1596535339937" duration="16654000" />
-      <workItem from="1596553727755" duration="37924000" />
-      <workItem from="1596619668566" duration="16529000" />
-      <workItem from="1596646641764" duration="18092000" />
-      <workItem from="1596706387246" duration="4207000" />
+      <updated>1596779759736</updated>
+      <workItem from="1596779760880" duration="70000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2248" y="230" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596676135293">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2248" y="230" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596676135293" />
-    <state x="2534" y="137" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1596458269633">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2534" y="137" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596458269633" />
-    <state x="2586" y="259" width="607" height="526" key="find.popup" timestamp="1596636764243">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2586" y="259" width="607" height="526" key="find.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596636764243" />
-    <state x="2364" y="232" key="run.anything.popup" timestamp="1596596152542">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2364" y="232" key="run.anything.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596596152542" />
-    <state x="2698" y="340" width="672" height="678" key="search.everywhere.popup" timestamp="1596670419268">
-      <screen x="1920" y="0" width="1920" height="1050" />
-    </state>
-    <state x="2698" y="340" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.0.1920.1050@1920.0.1920.1050" timestamp="1596670419268" />
   </component>
 </project>

@@ -5,37 +5,12 @@ let flag;
 /**
  * login state decision
  */
-$(document).ready(function() {
-    $('.remember-login').click(function () {
-        localStorage.setItem("flag_login", true);
-    });
+// $(document).ready(function() {
+//     $('.remember-login').click(function () {
+//         localStorage.setItem("flag_login", true);
+//     });
 
-    // $("#headerLogIn").ready(function() {
-        flag = localStorage.getItem("flag_login");
-
-    if(flag === 'true') {
-        $('.login-success').removeClass('show-btn');
-        $('.logout-success').addClass('show-btn');
-
-
-        $('.login-success').addClass('hide-btn');
-        $('.logout-success').removeClass('hide-btn');
-    } else {
-        $('.logout-success').removeClass('show-btn');
-        $('.login-success').addClass('show-btn');
-
-        $('.logout-success').addClass('hide-btn');
-        $('.login-success').removeClass('hide-btn');
-    }
-    // });
-
-    $('.logout-success').click(function () {
-        localStorage.setItem("flag_login", false);
-
-        $('.logout-success').addClass('hide-btn');
-        $('.login-success').removeClass('show-btn');
-    });
-});
+// });
 
 /**
  * Slide Img6
