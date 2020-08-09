@@ -129,17 +129,36 @@
 
         <?php
             if(isset($_SESSION['access_token']) && ($_SESSION['access_token'] != "")) {
-        ?>
-            <div class="txt-black38 registration-Bp"><?php $_SESSION['access_token'] = ""; echo "Hi, ".$_SESSION['user_first_name']." ".$_SESSION['user_last_name']."<br/>" ?>Your google account has already been registered!</div>
-        <?php 
+                if($_SESSION['registration'] == "fb_register") {
+            ?>
+                    <div class="txt-black38 registration-Bp"><?php $_SESSION['access_token'] = ""; echo "Hi, ".$_SESSION['user_name']."<br/>" ?>Your Facebook account has been successfully registered!</div>
+            <?php
+                } elseif($_SESSION['registration'] == "fb_exsist") {
+            ?>
+                    <div class="txt-black38 registration-Bp"><?php $_SESSION['access_token'] = ""; echo "Hi, ".$_SESSION['user_name']."<br/>" ?>Your Facebook account has already been registered!</div>
+            <?php
+                } elseif($_SESSION['registration'] == "g_register") {
+            ?>
+                    <div class="txt-black38 registration-Bp"><?php $_SESSION['access_token'] = ""; echo "Hi, ".$_SESSION['user_first_name']." ".$_SESSION['user_last_name']."<br/>" ?>Your Google account has been successfully registered!</div>
+            <?php
+                } elseif($_SESSION['registration'] == "g_exsist") {
+            ?>
+                <div class="txt-black38 registration-Bp"><?php $_SESSION['access_token'] = ""; echo "Hi, ".$_SESSION['user_first_name']." ".$_SESSION['user_last_name']."<br/>" ?>Your Google account has already been registered!</div>
+
+            <?php
+                } else {
+            ?>
+                <div class="txt-black38 registration-Bp">Your account has already been registered!</div>
+            <?php
+                }
             } else {
-        ?> 
-            <div class="txt-black38 registration-Bp">Thank you for registration!</div>
-            <div class="txt-black20 verification-email-padding">An activation email has been sent to your email address (don't forget to check your SPAM folder).</div>
-            <div class="txt-black20 verification-email-padding">Please check your email and click on the activation link.</div>
-        <?php
-            }
-        ?>
+            ?>
+                <div class="txt-black38 registration-Bp">Thank you for registration!</div>
+                <div class="txt-black20 verification-email-padding">An activation email has been sent to your email address (don't forget to check your SPAM folder).</div>
+
+            <?php
+                }
+            ?>
 
         </div>
     </section>

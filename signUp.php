@@ -3,14 +3,20 @@
 // Include config file
 require_once "config.php";
  
+/**
+ * 
+ * 
+ * Customer Sign Up
+ * 
+ */
 // Define variables and initialize with empty values
 $firstName = $lastName = $email = $password = $confirm_password = "";
 $firstName_err = $lastName_err = $email_err = $password_err = $confirm_password_err = "";
- 
+
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Validate firstName
+
+if (($_SERVER["REQUEST_METHOD"] == "POST")){
+   // Validate firstName
     if(empty(trim($_POST["firstName"]))){
         $firstName_err = "Please enter a firstName.";
     } 
@@ -23,11 +29,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email_err = "Please enter a email.";
     }
     
-
-
-
-
-
     if(!empty(trim($_POST["email"]))) {
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE email = ?";
@@ -59,7 +60,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-
 
     // if(!empty(trim($_POST["firstName"])) && !empty(trim($_POST["lastName"])) && !empty(trim($_POST["email"]))) {
     //     // Prepare a select statement
@@ -116,16 +116,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
     
-
-
-
-
-
-
-    
     // Check input errors before inserting in database
     if(empty($firstName_err) && empty($lastName_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)){
-        
+                
         // Prepare an insert statement
         $sql = "INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
 
@@ -152,22 +145,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-    
-    // Close connection
+        // Close connection
     mysqli_close($link);
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -192,6 +173,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <script src="./assets/js/main.js"></script>
     <link rel="stylesheet" href="assets/css/home.css">
+    <script>
+        let agreed = false;
+    </script>
 </head>
 <body>
 
@@ -290,16 +274,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </header>
 
-
-
-
-
-
-
     <div class="header-hr"><hr /></div>
-
     <section class="signUp-Bg">
-        <form class="signUp-card" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form id="signup-form" class="signUp-card" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
             <div class="txt-purple38 text-align-center sign-addPadding">Sign Up</div>
             <div class="signUp-grid">
@@ -360,10 +337,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <label class="checkboxContainer">
                 <a class="txt-gray18">I agree to terms and conditions</a>
-                <input type="checkbox"  id="vehicle1" name="vehicle1" value="Bike">
+                <input type="checkbox" id="vehicle1" name="termsCheck" value="Bike" onclick="checkAddress(this)">
                 <span class="checkMark"></span>
             </label>
-            <input type="submit" class="joinNow-btn justify-middle-contents" value="Join Now">    
+            <div class="joinNow-btn justify-middle-contents" onclick="replaceType(this)">Join Now</div>
         </form>
     </section>
 
@@ -394,6 +371,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 
 <script>
+    function checkAddress(checkbox)
+    {
+        agreed = checkbox.checked;
+    }
+
+    function replaceType(button)
+    {
+        if (agreed)
+        {
+            document.getElementById("signup-form").submit();
+        }
+    }
+    
     /**
      * Arrow replacing
      */

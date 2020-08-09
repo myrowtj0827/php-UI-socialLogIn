@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 //session_start();
- 
+
 $login_button = "";
 
 // Check if the user is already logged in, if yes then redirect him to welcome page
@@ -12,9 +12,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
  
 // Include config file
 require_once "config.php";
- 
 
-
+/**
+ * 
+ * 
+ * Customer Log In 
+ * 
+ */
 
 // Define variables and initialize with empty values
 $email = $password = "";
@@ -36,6 +40,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $password = trim($_POST["password"]);
     }
+
+    if(isset($_POST['remember'])) {
+        $_SESSION['remember'] = $_POST['remember'];
+    }
+
     
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
@@ -66,8 +75,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["email"] = $email;                            
-                            
+                            $_SESSION["email"] = $email;
+
+                            $_SESSION['remember_me'] = true;
+                            echo '<script> localStorage.setItem("rememberMe_login", true); </script>';
+
                             // Redirect user to welcome page
                             header("location: index.php");
                         } else{
@@ -91,14 +103,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 
-
+/**
+ * Google Login Link
+ */
     $_SESSION['from'] = 'login';
 
     $google_client->setRedirectUri('http://localhost/phpLogin/index.php');
     $login_button = '<a style="text-decoration: none !important;" href="'.$google_client->createAuthUrl().'"><div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div></a>';
 
+/**
+ * Facebook Login Link
+ */
+    $facebook_permissions = ['email']; // Optional permissions        
+    $facebook_login_button = $facebook_helper->getLoginUrl('http://localhost/phpLogin/', $facebook_permissions);
+    $facebook_login_button ='<a style="text-decoration: none !important;" href="'.$facebook_login_button.'"><div class="facebook-btn signUp-green-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/facebook-sign.png" alt="" />Continue with Facebook</div></a>';
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -143,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <?php
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 ?>
-                    <div class="rL-float phoneMax">
+                    <div id="logout" class="rL-float phoneMax">
                         <a class="boxShawDow signJoin justify-middle-contents" href="logout.php">Logout</a>
                     </div>
                 <?php
@@ -253,11 +272,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="logIn-lineHeight">
                         <label class="checkboxContainer txt-top">
                             <a class="txt-gray18 txt-bold">Remember me</a>
-                            <input type="checkbox"  id="vehicle1" name="vehicle1" value="Bike">
+                            <input type="checkbox" name="remember" onclick="checkbox(this)">
                             <span class="checkMark"></span>
                         </label>
 
-                        <input type="submit" class="joinNow-btn justify-middle-contents remember-login" value="Login">
+                        <div class="joinNow-btn justify-middle-contents remember-login" onclick="login()">Login</div>
                     </div>
                 </form>
 
@@ -274,12 +293,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <?php
                         echo '<div align="center">'.$login_button . '</div>';
-                    ?>
-                    <!-- <a style = "text-decoration: none !important;" href="'.$google_client->createAuthUrl().'">
-                        <div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div>
-                    </a> -->
-                   
-                    <div class="facebook-btn signUp-green-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/facebook-sign.png" alt="" />Continue with Facebook</div>
+                        echo '<div align="center">'.$facebook_login_button . '</div>';
+                    ?>                   
+                    
                 </div>
             </div>
 
@@ -317,6 +333,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 
 <script>
+    $(document).ready(function() {
+         $('#remembered').click(function () {
+             localStorage.setItem("rememberMe_login", true);
+         });
+
+         $('#logout').click(function () {
+              localStorage.setItem("rememberMe_login", false);
+          });
+    });
+
+    function login() {
+        document.getElementById("logIn").submit();
+    }
     /**
      * Arrow replacing
      */

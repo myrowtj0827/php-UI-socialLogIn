@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfac7b59a7308ed44e18041667567d6ed
+class ComposerStaticInit330bfe9b0fd2e7b0c3e8e3b7614e7d52
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -12,6 +12,7 @@ class ComposerStaticInitfac7b59a7308ed44e18041667567d6ed
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -40,6 +41,7 @@ class ComposerStaticInitfac7b59a7308ed44e18041667567d6ed
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
+            'Facebook\\' => 9,
         ),
     );
 
@@ -88,6 +90,10 @@ class ComposerStaticInitfac7b59a7308ed44e18041667567d6ed
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -112,10 +118,10 @@ class ComposerStaticInitfac7b59a7308ed44e18041667567d6ed
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfac7b59a7308ed44e18041667567d6ed::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfac7b59a7308ed44e18041667567d6ed::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitfac7b59a7308ed44e18041667567d6ed::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitfac7b59a7308ed44e18041667567d6ed::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit330bfe9b0fd2e7b0c3e8e3b7614e7d52::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit330bfe9b0fd2e7b0c3e8e3b7614e7d52::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit330bfe9b0fd2e7b0c3e8e3b7614e7d52::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit330bfe9b0fd2e7b0c3e8e3b7614e7d52::$classMap;
 
         }, null, ClassLoader::class);
     }

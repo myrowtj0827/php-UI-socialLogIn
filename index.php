@@ -1,15 +1,16 @@
 <!-- index.php -->
-
 <?php
     //Include Configuration File
     include('config.php');
+
 
     $signup_button = '';
     $_SESSION['access_token'] = "";
 
     //This $_GET["code"] variable value received after user has login into their Google Account redirct to PHP script then this variable value has been received
-    if(isset($_GET["code"]))
+    if(isset($_GET["code"]) && !isset($_GET["state"]))
     {
+
         //It will Attempt to exchange a code for an valid authentication token.
         $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
         
@@ -56,7 +57,6 @@
             }
         }
 
-
         // Prepare a select statement
         $sql = "SELECT id FROM users WHERE firstName = ? and lastName = ? and email = ?";
         
@@ -83,6 +83,8 @@
                                                
                         header('location: index.php');
                     } else {
+
+                        $_SESSION['registration'] = "g_exsist";
                         header("location: emailVerification.php");
                     }                      
                   
@@ -102,7 +104,8 @@
                         
                         // Attempt to execute the prepared statement
                         if(mysqli_stmt_execute($stmt_add)){
-                            // Redirect to login page                
+                            // Redirect to login page      
+                             $_SESSION['registration'] = "g_register";          
                             header("location: emailVerification.php");
                         } else{
                             echo mysqli_error($link);
@@ -121,23 +124,121 @@
             mysqli_stmt_close($stmt);
         }       
     }
-
     
+    /**
+     * Google Sign Up link
+     */
     //This is for check user has login into system by using Google account, if User not login into system then it will execute if block of code and make code for display Login link for Login using Google account.
     if(!isset($_SESSION['access_token']))
     {
     //Create a URL to obtain user authorization
-    //  $login_button = '<a href="'.$google_client->createAuthUrl().'"><img src="sign-in-with-google.png" /></a>';
-
         $signup_button = '<a style="text-decoration: none !important;" href="'.$google_client->createAuthUrl().'"><div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div></a>';
     } else {
         $signup_button = '<a style="text-decoration: none !important;" href="'.$google_client->createAuthUrl().'"><div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div></a>';
     }
     
     // Close connection
-    mysqli_close($link);
-?>
+    // mysqli_close($link);
 
+
+    $facebook_output = '';
+    if(isset($_GET['code']) && isset($_GET["state"])) {
+
+        if(isset($_SESSION['access_token']) && $_SESSION['access_token'] !== ''){
+            $access_token = $_SESSION['access_token'];
+        } else {            
+            $access_token = $facebook_helper->getAccessToken();
+            $_SESSION['access_token'] = $access_token;            
+            $facebook->setDefaultAccessToken($_SESSION['access_token']);
+        }
+
+        $_SESSION['user_name'] = '';
+        $_SESSION['user_email_address'] = '';
+    
+        $graph_response = $facebook->get("/me?fields=name,email", $access_token);    
+        $facebook_user_info = $graph_response->getGraphUser();
+        
+        if(!empty($facebook_user_info['name'])){            
+            $_SESSION['user_name'] = $facebook_user_info['name'];    
+        }
+    
+        if(!empty($facebook_user_info['email'])){
+            $_SESSION['user_email_address'] = $facebook_user_info['email'];        
+        }
+
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE firstName = ? and email = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ss", $param_firstName, $param_email);
+            
+            // Set parameters
+            $param_firstName = $_SESSION['user_name'];
+            $param_email = $_SESSION['user_email_address'];
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+
+            // Testing the google account registration state
+                if(mysqli_stmt_num_rows($stmt) == 1){
+
+                    if ($_SESSION['from'] === 'login') {
+                        $_SESSION['from'] === 'index';
+                        $_SESSION["loggedin"] = true;
+                                               
+                        header('location: index.php');
+                    } else {
+                        $_SESSION["registration"] = "fb_exsist";
+                        header("location: emailVerification.php");
+                    }                 
+                } else{
+                  
+                    // Prepare an insert statement
+                    $sql_add = "INSERT INTO users (firstName, email) VALUES (?, ?)";
+
+                    if($stmt_add = mysqli_prepare($link, $sql_add)){
+                        // Bind variables to the prepared statement as parameters
+                        mysqli_stmt_bind_param($stmt_add, "ss", $param_first, $param_email_address);
+                        
+                        // Set parameters
+                        $param_first = $_SESSION['user_name'];
+                        $param_email_address = $_SESSION['user_email_address'];
+                        
+                        // Attempt to execute the prepared statement
+                        if(mysqli_stmt_execute($stmt_add)){
+                            // Redirect to login page
+                            echo '<script>alert('. mysqli_error($link) . ')</script>';
+                            $_SESSION["registration"] = "fb_register";
+                            header("location: emailVerification.php");
+                        } else{
+                            $_SESSION["registration"] = "fb_fail";
+                            echo '<script>alert('. mysqli_error($link) . ')</script>';
+                            echo "Something went wrong. Please try again later. 108";
+                        }
+
+                        // Close statement
+                        mysqli_stmt_close($stmt_add);
+                    }                  
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later. 43";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+     // Get facebook url
+     $facebook_permissions = ['email']; // Optional permissions        
+     $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost/phpLogin/index.php', $facebook_permissions);
+
+     // Render Facebook login button
+     $facebook_login_url ='<a style="text-decoration: none !important;" href="'.$facebook_login_url.'"><div class="facebook-btn signUp-green-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/facebook-sign.png" alt="" />Continue with Facebook</div></a>';
+?>
 
 <html>
  <head>
@@ -163,7 +264,12 @@
 
     <script src="./assets/js/main.js"></script>
     <link rel="stylesheet" href="assets/css/home.css">
-  
+
+
+    <script>
+        let remember_me;
+    </script>
+
  </head>
  <body>
 
@@ -185,7 +291,7 @@
                 <?php
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 ?>
-                    <div class="rL-float phoneMax">
+                    <div id="logout" class="rL-float phoneMax">
                         <a class="boxShawDow signJoin justify-middle-contents" href="logout.php">Logout</a>
                     </div>
                 <?php
@@ -262,28 +368,6 @@
         </div>
     </header>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section class="backStores-Bg justify-homeContents">
         <div class="homeBg-desc">
             <div class="large-txt">Get up to 40% Cash Back at over 2,500 stores</div>
@@ -295,7 +379,7 @@
        <?php
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         ?>
-            <div class="">    
+            <div class=""> 
             </div>
         <?php
             } else {
@@ -303,16 +387,12 @@
             <div class="signUp-modal justify-middle-nonFlex login-success">
             <div class="signUp-black-txt txt-bold">Sign Up Today and Get Bonus a $10*</div>
 
-
-            <!-- <a style = "text-decoration: none !important;" href="'.$google_client->createAuthUrl().'">
-                <div class="google-btn signUp-red-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/google.png" alt="" /> Continue with Google</div>
-            </a> -->
-            
-            <?php
-                echo '<div align="center">'.$signup_button . '</div>';
+            <?php          
+                echo '<div id="google_login" align="center">'.$signup_button . '</div>';
+            ?> 
+            <?PHP
+                echo '<div id="facebook_login" align="center">'.$facebook_login_url . '</div>';
             ?>
-
-            <div class="facebook-btn signUp-green-txt txt-bold justify-middle-contents"><img class="google-facebook" src="assets/images/home/facebook-sign.png" alt="" />Continue with Facebook</div>
 
             <div class="rL-float hr-padding">
                 <div class="or-left"><hr /></div>
@@ -332,9 +412,6 @@
             }
         ?>      
     </section>
-
-
-
 
     <section class="rL-margin img4-section">
         <div class="grid1-width">
@@ -753,9 +830,19 @@
     </footer>
 </div>
 
-
-
     <script>
+        $(document).ready(function() {
+            $('#remembered').click(function () {
+                localStorage.setItem("rememberMe_login", true);
+            });
+
+            $('#logout').click(function () {
+                localStorage.setItem("rememberMe_login", false);
+            });
+        });
+
+        remember_me = localStorage.getItem("rememberMe_login");
+
         /**
             * Arrow replacing
             */

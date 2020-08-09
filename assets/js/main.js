@@ -1,16 +1,4 @@
-let flag_login = false;
 let flag;
-
-// localStorage.setItem("flag_login", false);
-/**
- * login state decision
- */
-// $(document).ready(function() {
-//     $('.remember-login').click(function () {
-//         localStorage.setItem("flag_login", true);
-//     });
-
-// });
 
 /**
  * Slide Img6

@@ -42,12 +42,11 @@
                         <input class="air-input" type="text" placeholder="Search.." />
                     </div>
                 </div>
-               
-                
+
                 <?php
                     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 ?>
-                    <div class="rL-float phoneMax">
+                    <div id="logout" class="rL-float phoneMax">
                         <a class="boxShawDow signJoin justify-middle-contents" href="logout.php">Logout</a>
                     </div>
                 <?php
@@ -439,6 +438,17 @@
 </div>
 
 <script>
+$(document).ready(function() {
+    $('#remembered').click(function () {
+        localStorage.setItem("rememberMe_login", true);
+    });
+
+    $('#logout').click(function () {
+        localStorage.setItem("rememberMe_login", false);
+    });
+});
+
+
     /**
      * Arrow replacing
      */

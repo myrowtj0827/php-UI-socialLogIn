@@ -22,7 +22,6 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-
 /**
  * 
  * 
@@ -45,12 +44,32 @@ $google_client->setClientSecret('txtsCBvlYFHO6xhia3YISkuU');
 //Set the OAuth 2.0 Redirect URI
 $google_client->setRedirectUri('http://localhost/phpLogin/index.php');
 
-//
 $google_client->addScope('email');
-
 $google_client->addScope('profile');
 
-//start session on web page
-session_start();
+/**
+ * 
+ * Facebook logIn config
+ * 
+ */
+// FaceBook APP ID: "298886321529679"
+// secret: "ea79724a399e3d14856864f9f42c35f0"
 
+if (!session_id())
+{
+    session_start();
+}
+
+// Call Facebook API
+
+$facebook = new \Facebook\Facebook([
+  'app_id'      => '2703734399952373',
+  'app_secret'     => '441b5010e883632d759a4a874f9245e8',
+  'default_graph_version'  => 'v2.10'
+]);
+
+$facebook_helper = $facebook->getRedirectLoginHelper();
+
+//start session on web page
+// session_start();
 ?>
