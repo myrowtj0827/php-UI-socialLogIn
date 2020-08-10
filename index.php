@@ -3,7 +3,6 @@
     //Include Configuration File
     include('config.php');
 
-
     $signup_button = '';
     $_SESSION['access_token'] = "";
 
@@ -265,7 +264,6 @@
     <script src="./assets/js/main.js"></script>
     <link rel="stylesheet" href="assets/css/home.css">
 
-
     <script>
         let remember_me;
     </script>
@@ -274,7 +272,6 @@
  <body>
 
 <div class="margin-center-width homeHeader">
-
 <!--  Header  -->
     <header id="">
         <div class="flex-container header-txt justify-middle-contents">
@@ -410,7 +407,7 @@
         </div>
         <?php
             }
-        ?>      
+        ?>
     </section>
 
     <section class="rL-margin img4-section">

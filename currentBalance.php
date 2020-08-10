@@ -261,7 +261,6 @@ $(document).ready(function() {
     });
 });
 
-
     /**
      * Arrow replacing
      */

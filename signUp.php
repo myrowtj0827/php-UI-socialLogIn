@@ -10,10 +10,8 @@ require_once "config.php";
  * 
  */
 // Define variables and initialize with empty values
-$firstName = $lastName = $email = $password = $confirm_password = "";
-$firstName_err = $lastName_err = $email_err = $password_err = $confirm_password_err = "";
-
-// Processing form data when form is submitted
+$firstName = $lastName = $email = $password = $confirm_password = $captcha = "";
+$firstName_err = $lastName_err = $email_err = $password_err = $confirm_password_err = $code_err = "";
 
 if (($_SERVER["REQUEST_METHOD"] == "POST")){
    // Validate firstName
@@ -23,6 +21,10 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
     
     if(empty(trim($_POST["lastName"]))){
         $lastName_err = "Please enter a lastName.";
+    }
+
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Please enter a email.";
     }
 
     if(empty(trim($_POST["email"]))){
@@ -44,7 +46,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
             if(mysqli_stmt_execute($stmt)){
                 /* store result */
                 mysqli_stmt_store_result($stmt);
-                echo mysqli_stmt_num_rows($stmt);
+                //echo mysqli_stmt_num_rows($stmt);
                 if(mysqli_stmt_num_rows($stmt) == 1){
                     $email_err = "This email is already taken.";
                 } else{
@@ -60,42 +62,6 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
             mysqli_stmt_close($stmt);
         }
     }
-
-    // if(!empty(trim($_POST["firstName"])) && !empty(trim($_POST["lastName"])) && !empty(trim($_POST["email"]))) {
-    //     // Prepare a select statement
-    //     $sql = "SELECT id FROM users WHERE firstName = ? and lastName = ? and email = ?";
-        
-    //     if($stmt = mysqli_prepare($link, $sql)){
-    //         // Bind variables to the prepared statement as parameters
-    //         mysqli_stmt_bind_param($stmt, "sss", $param_firstName, $param_lastName, $param_email);
-            
-    //         // Set parameters
-    //         $param_firstName = trim($_POST["firstName"]);
-    //         $param_lastName = trim($_POST["lastName"]);
-    //         $param_email = trim($_POST["email"]);
-            
-    //         // Attempt to execute the prepared statement
-    //         if(mysqli_stmt_execute($stmt)){
-    //             /* store result */
-    //             mysqli_stmt_store_result($stmt);
-    //             echo mysqli_stmt_num_rows($stmt);
-    //             if(mysqli_stmt_num_rows($stmt) == 3){
-    //                 $firstName_err = "This firstName is already taken.";
-    //                 $lastName_err = "This lastName is already taken.";
-    //                 $email_err = "This email is already taken.";
-    //             } else{
-    //                 $firstName = trim($_POST["firstName"]);
-    //                 $lastName = trim($_POST["lastName"]);
-    //                 $email = trim($_POST["email"]);
-    //             }
-    //         } else{
-    //             echo "Oops! Something went wrong. Please try again later. 43";
-    //         }
-
-    //         // Close statement
-    //         mysqli_stmt_close($stmt);
-    //     }
-    // }
     
     // Validate password
     if(empty(trim($_POST["password"]))){
@@ -115,9 +81,16 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
             $confirm_password_err = "Password did not match.";
         }
     }
+
+    //Validate Security Code
+    if(empty(trim($_POST['captcha']))){
+        $code_err = "Please enter security code.";
+    } else{
+        $captcha = $_POST["captcha"];
+    }
     
     // Check input errors before inserting in database
-    if(empty($firstName_err) && empty($lastName_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err)){
+    if(empty($firstName_err) && empty($lastName_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err) && empty($code_err) && (strcasecmp($_SESSION['captcha'], $captcha) == 0)){
                 
         // Prepare an insert statement
         $sql = "INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
@@ -277,14 +250,14 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
     <div class="header-hr"><hr /></div>
     <section class="signUp-Bg">
         <form id="signup-form" class="signUp-card" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-
+               
             <div class="txt-purple38 text-align-center sign-addPadding">Sign Up</div>
             <div class="signUp-grid">
 
                 <div class="form-group <?php echo (!empty($firstName_err)) ? 'has-error' : ''; ?>">
                     <div class="txt-black22">First Name</div>
                     <div class="signUp-input">
-                        <input type="text" name="firstName" class="form-control user-bg" value="<?php echo $firstName; ?>" placeholder="Rohan" />
+                        <input type="text" name="firstName" class="form-control user-bg" value="<?php echo $firstName; ?>" placeholder="Rohan" required="required"/>
                     </div>
                     <span class="help-block"><?php echo $firstName_err; ?></span>
                 </div>
@@ -292,16 +265,15 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
                 <div class="form-group <?php echo (!empty($lastName_err)) ? 'has-error' : ''; ?>">
                     <div class="txt-black22">Last Name</div>
                     <div class="signUp-input">
-                        <input type="text" name="lastName" class="form-control user-bg" value="<?php echo $lastName; ?>" placeholder="Patel" />
+                        <input type="text" name="lastName" class="form-control user-bg" value="<?php echo $lastName; ?>" placeholder="Patel" required="required"/>
                     </div>
                     <span class="help-block"><?php echo $lastName_err; ?></span>
                 </div>
 
-
                 <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                     <div class="txt-black22">Password</div>
                     <div class="signUp-input">
-                        <input type="password" name="password" class="form-control psw-bg" value="<?php echo $password;?>" placeholder="Password" />
+                        <input type="password" name="password" class="form-control psw-bg" value="<?php echo $password;?>" placeholder="Password" required="required"/>
                     </div>
                     <span class="help-block"><?php echo $password_err; ?></span>
 
@@ -311,7 +283,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
                 <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
                     <div class="txt-black22">Confirm Password</div>
                     <div class="signUp-input">
-                        <input type="password" name="confirm_password" class="form-control psw-bg" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password" />
+                        <input type="password" name="confirm_password" class="form-control psw-bg" value="<?php echo $confirm_password; ?>" placeholder="Confirm Password" required="required"/>
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
                 </div>
@@ -321,17 +293,20 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
                 <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                     <div class="txt-black22">Email</div>
                     <div class="signUp-input">
-                        <input type="email" name="email" class="form-control mail-bg" value="<?php echo $email; ?>" placeholder="Rohanpatel0125@gmail.com" />
+                        <input type="email" name="email" class="form-control mail-bg" value="<?php echo $email; ?>" placeholder="Rohanpatel0125@gmail.com" required="required"/>
                     </div>
                     <span class="help-block"><?php echo $email_err; ?></span>
                 </div>
 
-                <div class="agree-top">
+                <center><img src="captcha.php" /></center>                
+
+                <div class="form-group agree-top <?php echo (!empty($code_err)) ? 'has-error' : ''; ?>" required="required">
                     <div class="txt-black22">Security Code</div>
 
                     <div class="signUp-input">
-                        <input class="psw-bg" type="text" placeholder="325220" />
+                        <input type="text" class="form-control psw-bg" name="captcha" placeholder="325220" required="required"/>
                     </div>
+                    <span class="help-block"><?php echo $code_err; ?></span>
                 </div>
             </div>
 
@@ -371,6 +346,40 @@ if (($_SERVER["REQUEST_METHOD"] == "POST")){
 </div>
 
 <script>
+    $(document).ready(function() {
+
+    //change CAPTCHA on each click or on refreshing page
+        $("#reload").click(function() {
+            $("img#img").remove();
+            var id = Math.random();
+            $('<img id="img" src="captcha.php?id='+id+'"/>').appendTo("#imgdiv");
+            id ='';
+        });
+
+        //validation function
+        $('#button').click(function() {
+            var name = $("#username1").val();
+            var email = $("#email1").val();
+            var captcha = $("#captcha1").val();
+
+            if (name == '' || email == '' || captcha == '')
+            {
+                alert("Fill All Fields");
+            } else { //validating CAPTCHA with user input text
+                var dataString = 'captcha=' + captcha;
+                
+                $.ajax({
+                    type: "POST",
+                    url: "verify.php",
+                    data: dataString,
+                    success: function(html) {
+                        // alert(html);
+                    }
+                });
+            }
+        });
+    });
+
     function checkAddress(checkbox)
     {
         agreed = checkbox.checked;

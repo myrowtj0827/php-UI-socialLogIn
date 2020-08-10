@@ -77,8 +77,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;
 
-                            $_SESSION['remember_me'] = true;
-                            echo '<script> localStorage.setItem("rememberMe_login", true); </script>';
+                            //$_SESSION['remember_me'] = true;
+                            //echo '<script> localStorage.setItem("rememberMe_login", true); </script>';
 
                             // Redirect user to welcome page
                             header("location: index.php");
@@ -279,7 +279,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="joinNow-btn justify-middle-contents remember-login" onclick="login()">Login</div>
                     </div>
                 </form>
-
 
                 <div class="rL-float hr-padding">
                     <div class="or-left"><hr /></div>
